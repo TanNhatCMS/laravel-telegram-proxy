@@ -13,9 +13,7 @@ class TelegramProxyController extends Controller
      */
     public function index()
     {
-        return view('doc')
-            ->header('Content-Type', 'text/html; charset=UTF-8')
-            ->header('Cache-Control', 'public, max-age=3600');
+        return view('doc');
     }
 
     /**

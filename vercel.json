@@ -1,0 +1,41 @@
+{
+    "version": 2,
+    "framework": null,
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.6.2"
+        }
+    },
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "api/index.php"
+        }
+    ],
+
+    "env": {
+        "APP_MAINTENANCE_DRIVER": "file",
+        "APP_CONFIG_CACHE": "/tmp/config.php",
+        "APP_EVENTS_CACHE": "/tmp/events.php",
+        "APP_PACKAGES_CACHE": "/tmp/packages.php",
+        "APP_ROUTES_CACHE": "/tmp/routes.php",
+        "APP_SERVICES_CACHE": "/tmp/services.php",
+        "APP_STORAGE_PATH": "/tmp/storage",
+        "LARAVEL_STORAGE_PATH": "/tmp/storage",
+        "VIEW_COMPILED_PATH": "/tmp/views",
+        "SSR_TEMP_PATH": "/tmp/ssr",
+        "CACHE_DRIVER": "array",
+        "LOG_CHANNEL": "stderr",
+        "SESSION_DRIVER": "cookie",
+        "LOG_STACK": "single",
+        "LOG_LEVEL": "debug",
+        "SESSION_LIFETIME": "120",
+        "BROADCAST_CONNECTION": "log",
+        "QUEUE_CONNECTION": "database",
+        "CACHE_STORE": "database",
+        "NODE_PATH": "node",
+        "NOW_PHP_DEBUG": "1"
+    },
+    "outputDirectory": "public",
+    "public": true
+}

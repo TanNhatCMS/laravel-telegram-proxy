@@ -13,7 +13,7 @@ class TelegramProxyController extends Controller
      */
     public function index()
     {
-        return view('doc');
+        return view('welcome');
     }
 
     /**

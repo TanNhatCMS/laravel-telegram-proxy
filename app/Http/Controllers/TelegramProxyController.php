@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Telegram\Bot\Api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Response;
+use Telegram\Bot\Exceptions\TelegramSDKException;
 
 class TelegramProxyController extends Controller
 {
@@ -18,28 +20,28 @@ class TelegramProxyController extends Controller
 
     /**
      * Proxy tất cả yêu cầu đến Telegram Bot API.
+     * @throws TelegramSDKException
      */
     public function proxy(Request $request, string $token, ?string $method = null): Response
     {
         $telegramUrl = "https://api.telegram.org/bot{$token}";
+
+
+
         if ($method) {
             $telegramUrl .= '/' . $method;
         }
 
         try {
-            $forwarded = Http::withHeaders($request->headers->all())
-                ->withBody($request->getContent(), $request->header('Content-Type', 'application/json'))
-                ->send($request->method(), $telegramUrl, [
-                    'query' => $request->query(),
-                ]);
+            $telegram = new Api($token);
 
-            return response($forwarded->body(), $forwarded->status())
-                ->withHeaders([
-                    'Content-Type' => $forwarded->header('Content-Type', 'application/json'),
-                    'Access-Control-Allow-Origin' => '*',
-                    'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers' => 'Content-Type',
-                ]);
+            if (!$method) {
+                return response()->json(['error' => 'Method is required'], 400);
+            }
+
+            $response = $telegram->$method($request->all());
+
+            return response()->json($response);
         } catch (\Exception $e) {
             return response()->json([
                 'error' => 'Error proxying request',

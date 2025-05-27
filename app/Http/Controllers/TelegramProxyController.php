@@ -11,9 +11,9 @@ class TelegramProxyController extends Controller
     /**
      * Hiển thị tài liệu HTML tại trang chủ.
      */
-    public function documentation(): Response
+    public function index()
     {
-        return response()->view('doc', [], 200)
+        return view('doc')
             ->header('Content-Type', 'text/html; charset=UTF-8')
             ->header('Cache-Control', 'public, max-age=3600');
     }

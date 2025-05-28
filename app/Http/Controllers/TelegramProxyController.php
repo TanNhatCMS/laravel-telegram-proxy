@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Telegram\Bot\Api;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\Response;
 use Telegram\Bot\Exceptions\TelegramSDKException;
 
@@ -24,14 +23,6 @@ class TelegramProxyController extends Controller
      */
     public function proxy(Request $request, string $token, ?string $method = null): Response
     {
-        $telegramUrl = "https://api.telegram.org/bot{$token}";
-
-
-
-        if ($method) {
-            $telegramUrl .= '/' . $method;
-        }
-
         try {
             $telegram = new Api($token);
 

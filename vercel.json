@@ -14,6 +14,9 @@
     ],
 
     "env": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "true",
+        "APP_URL": "https://laravel-telegram-proxy.vercel.app",
         "APP_MAINTENANCE_DRIVER": "file",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
@@ -35,7 +38,5 @@
         "CACHE_STORE": "database",
         "NODE_PATH": "node",
         "NOW_PHP_DEBUG": "1"
-    },
-    "outputDirectory": "public",
-    "public": true
+    }
 }

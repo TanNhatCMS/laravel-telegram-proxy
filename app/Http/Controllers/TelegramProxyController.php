@@ -31,9 +31,9 @@ class TelegramProxyController extends Controller
             }
 
             $response = $telegram->$method($request->all());
-
-            return response()->json($response);
-        } catch (\Exception $e) {
+            $data['result'] = $response;
+            return response()->json($data);
+        } catch (Exception $e) {
             return response()->json([
                 'error' => 'Error proxying request',
                 'message' => $e->getMessage(),

@@ -51,7 +51,7 @@ return [
     */
 
     'channels' => [
-        
+
         'stdout' => [
             'driver' => 'monolog',
             'handler' => StreamHandler::class,

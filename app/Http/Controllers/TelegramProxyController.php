@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Telegram\Bot\Api;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
